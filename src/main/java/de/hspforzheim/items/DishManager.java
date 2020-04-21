@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Cedric Jansen
  */
-public class DishManager {
+public class DishManager extends Manager {
     
     
     public void addDish(String name) {
@@ -25,16 +25,36 @@ public class DishManager {
         }
         else {
            for( Dish dish : dishList) {
-               System.out.println("Flight id: " + dish.getId());
+               System.out.println("[Flight id:] " + dish.getId() + " --> " + dish.getName());
            }
         }
     }
     
     public void updateDish() {
-        System.out.println("Update flight.");
+        System.out.println("Update dish.");
     }
     
     public void deleteDish() {
-        System.out.println("Delete flight.");
+        super.delete(this);
+    }
+
+    @Override
+    protected void deleteWithId(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void deleteAtIndex(int index) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void showItemIds() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void showItemIndexes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

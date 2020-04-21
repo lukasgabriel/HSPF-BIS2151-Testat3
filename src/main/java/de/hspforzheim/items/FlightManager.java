@@ -15,10 +15,63 @@ import java.util.Scanner;
  */
 public class FlightManager extends Manager{
     
+    private static final String ASK_FOR_FLIGHT_NAME = "Please enter a flight name:";
+    private static final String ASK_FOR_FLIGHT_NUMBER = "Please enter a flight number (any 3 chars):";
+    private static final String ASK_FOR_DISH_CAPACITY = "Please enter a dish capacity (1-5):";
+    
+    public void addFlight() {
+        Scanner scanner = new Scanner(System.in);
+        String name = checkName(scanner);
+        String flightNumber = checkFlightNumber(scanner);
+        int dishCapacity = checkDishCapacity(scanner);
+        Flight flight = new Flight(name, flightNumber, dishCapacity);
+    }
+    
+     private int checkDishCapacity(Scanner scanner) {
+         int dishCapacity = 0;
+         while(dishCapacity < 1 || dishCapacity > 5) {
+            System.out.println(ASK_FOR_DISH_CAPACITY);
+            try {
+                dishCapacity = scanner.nextInt(); 
+            } catch( InputMismatchException e) {
+                dishCapacity = 0;
+                scanner.next();
+            }
+   
+        }
+        return dishCapacity;
+    }
     
     
-    public void addFlight(String name) {
-        Flight flight = new Flight(name);
+     private String checkFlightNumber(Scanner scanner) {
+         String flightNumber = "";
+         while(flightNumber.length() != 3) {
+            System.out.println(ASK_FOR_FLIGHT_NUMBER);
+            try {
+                flightNumber = scanner.nextLine(); 
+            } catch( InputMismatchException e) {
+                flightNumber = "";
+                scanner.next();
+            }
+            flightNumber = flightNumber.trim();
+            flightNumber = flightNumber.toUpperCase();
+        }
+        return flightNumber;
+    }
+    
+    private String checkName(Scanner scanner) {
+         String name = "";
+         while(name.length() <= 5 || name.length() >= 64) {
+            System.out.println(ASK_FOR_FLIGHT_NAME);
+            try {
+                name = scanner.nextLine(); 
+            } catch( InputMismatchException e) {
+                name = "";
+                scanner.next();
+            }
+            name = name.trim();
+        }
+        return name;
     }
     
     public void listFlights() {
@@ -38,7 +91,7 @@ public class FlightManager extends Manager{
     }
     
     public void deleteFlight() {
-        super.delete();  
+        super.delete(this);  
     }
 
     @Override

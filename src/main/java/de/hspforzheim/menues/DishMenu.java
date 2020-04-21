@@ -57,7 +57,7 @@ public class DishMenu extends Menu{
     protected void handleUserInput( ) {
         switch(userInput) {
             case 0:
-                this.setIsInFlightMenu(false);
+                isInDishMenu = false;
                 break;
             case 1:
                 dishManager.addDish("test");
@@ -72,7 +72,7 @@ public class DishMenu extends Menu{
                 dishManager.listDishes();
                 break;
             default:
-                System.out.println("Any other key. should stay");
+                
                 break;
         }
     }
@@ -89,7 +89,7 @@ public class DishMenu extends Menu{
         }
     }
     
-    public void setIsInFlightMenu( boolean valueToSet) {
+    public void setIsInDishMenu( boolean valueToSet) {
         isInDishMenu = valueToSet;
     }
     
