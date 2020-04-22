@@ -12,8 +12,8 @@ import java.util.UUID;
  *
  * @author Cedric Jansen
  */
-public class Flight extends Item{
-    
+public class Flight extends Item {
+   
 
     private String flightNumber;
     private int dishCapacity;
