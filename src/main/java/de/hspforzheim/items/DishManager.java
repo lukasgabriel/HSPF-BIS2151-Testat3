@@ -25,7 +25,7 @@ public class DishManager extends Manager {
         }
         else {
            for( Dish dish : dishList) {
-               System.out.println("[Flight id:] " + dish.getId() + " --> " + dish.getName());
+               System.out.println("[Dish id:] " + dish.getId() + " --> " + dish.getName());
            }
         }
     }

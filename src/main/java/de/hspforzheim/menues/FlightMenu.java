@@ -73,15 +73,19 @@ public class FlightMenu extends Menu{
                 isInFlightMenu = false;
                 break;
             case 1: // user input is 1
+                System.out.println("\nEFA: FLIGHT UPDATE:" );
                 flightManager.addFlight();
                 break;
             case 2: // user input is 2
                 flightManager.updateFlight();
                 break;
-            case 3: // user input is 3
+            case 3: // user input is 3  
+                System.out.println("\nEFA: FLIGHT DELETION:" );
                 flightManager.deleteFlight();
                 break;
             case 4: // user input is 4
+                System.out.println("");
+                System.out.println("\nEFA: FLIGHT OVERVIEW:" );
                 flightManager.listFlights();
                 break;
             default: // User input is anything but 0, 1, 2, 3, 4

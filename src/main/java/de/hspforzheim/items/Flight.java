@@ -17,6 +17,7 @@ public class Flight extends Item {
 
     private String flightNumber;
     private int dishCapacity;
+    private int maxPassengers;
     
     private ArrayList<Dish> storedDishes = new ArrayList<>();
     
@@ -30,9 +31,12 @@ public class Flight extends Item {
        flightList.add(this);
     }
     
-    public Flight(String name, String flightNumber, int dishCapacity) {
+    public Flight(String name, String flightNumber, int maxPassengers, int dishCapacity) {
       this(name);
       this.dishCapacity = dishCapacity;
+      this.flightNumber = flightNumber;
+      this.maxPassengers = maxPassengers;
+      System.out.println("\n" + this + " was created.");
     }
     
     
@@ -47,7 +51,9 @@ public class Flight extends Item {
     
     @Override
     public String toString() {
-        return "[Flight: [ID:" + this.id + "] " + this.name + "]"; 
+         
+        return "[Flight: [ID:" + this.id + "] : " + this.name + "(Num: " + flightNumber + " | Max. passengers: "
+                + maxPassengers + " | Max. dishes: " + dishCapacity + ")]"; 
     }
     
     

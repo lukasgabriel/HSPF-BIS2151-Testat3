@@ -15,25 +15,47 @@ import java.util.Scanner;
  */
 public class FlightManager extends Manager{
     
-    private static final String ASK_FOR_FLIGHT_NAME = "Please enter a flight name:";
-    private static final String ASK_FOR_FLIGHT_NUMBER = "Please enter a flight number (any 3 chars):";
-    private static final String ASK_FOR_DISH_CAPACITY = "Please enter a dish capacity (1-5):";
+    private static final String ASK_FOR_FLIGHT_NAME = "Please enter a FLIGHT NAME. Must be between 3 and 64 characters: ";
+    private static final String ASK_FOR_FLIGHT_NUMBER = "Please enter a FLIGHT NUMBER \n(any 3 chars e.g. LTH, can contain numbers, special characters, etc.):";
+    private static final String ASK_FOR_DISH_CAPACITY = "Please enter a DISH CAPACITY (1-5): ";
+    private static final String ASK_FOR_PASSENGER_CAPACITY = "Please enter a MAXIMUM PASSENGER AMOUNT(1-200): ";
+    private static final String ERROR_OCCURED = "An error occured.";
     
     public void addFlight() {
         Scanner scanner = new Scanner(System.in);
         String name = checkName(scanner);
         String flightNumber = checkFlightNumber(scanner);
         int dishCapacity = checkDishCapacity(scanner);
-        Flight flight = new Flight(name, flightNumber, dishCapacity);
+        int maxPassengers = checkPassengerCapacity(scanner);
+        
+        Flight flight = new Flight(name, flightNumber, maxPassengers, dishCapacity);
+    }
+    
+    
+     private int checkPassengerCapacity(Scanner scanner) {
+        int passengerNumber = 0;
+         while(passengerNumber < 1 || passengerNumber > 200) {
+            System.out.print(ASK_FOR_PASSENGER_CAPACITY);
+            try {
+                passengerNumber = scanner.nextInt(); 
+            } catch( InputMismatchException e) {
+                System.out.println(ERROR_OCCURED);
+                passengerNumber = 0;
+                scanner.next();
+            }
+   
+        }
+        return passengerNumber;
     }
     
      private int checkDishCapacity(Scanner scanner) {
          int dishCapacity = 0;
          while(dishCapacity < 1 || dishCapacity > 5) {
-            System.out.println(ASK_FOR_DISH_CAPACITY);
+            System.out.print(ASK_FOR_DISH_CAPACITY);
             try {
                 dishCapacity = scanner.nextInt(); 
             } catch( InputMismatchException e) {
+                System.out.println(ERROR_OCCURED);
                 dishCapacity = 0;
                 scanner.next();
             }
@@ -46,10 +68,11 @@ public class FlightManager extends Manager{
      private String checkFlightNumber(Scanner scanner) {
          String flightNumber = "";
          while(flightNumber.length() != 3) {
-            System.out.println(ASK_FOR_FLIGHT_NUMBER);
+            System.out.print(ASK_FOR_FLIGHT_NUMBER);
             try {
                 flightNumber = scanner.nextLine(); 
             } catch( InputMismatchException e) {
+                System.out.println(ERROR_OCCURED);
                 flightNumber = "";
                 scanner.next();
             }
@@ -61,11 +84,12 @@ public class FlightManager extends Manager{
     
     private String checkName(Scanner scanner) {
          String name = "";
-         while(name.length() <= 5 || name.length() >= 64) {
-            System.out.println(ASK_FOR_FLIGHT_NAME);
+         while(name.length() <= 3 || name.length() >= 64) {
+            System.out.print(ASK_FOR_FLIGHT_NAME);
             try {
                 name = scanner.nextLine(); 
             } catch( InputMismatchException e) {
+                System.out.println(ERROR_OCCURED);
                 name = "";
                 scanner.next();
             }
@@ -80,8 +104,9 @@ public class FlightManager extends Manager{
             System.out.println("No flights to display.");
         }
         else {
+          
            for( Flight flight : flights) {
-               System.out.println("[Flight id:] " + flight.getId() + " --> " + flight.getName());
+               System.out.println("[Flight id:] " + flight.getId() + " --> " + flight);
            }
         }
     }
@@ -131,4 +156,6 @@ public class FlightManager extends Manager{
             System.out.println("[Flight INDEX:] " + i + " --> " + flights.get(i).getName());
         }
     }
+
+
 }
