@@ -6,7 +6,6 @@
 package de.hspforzheim.items;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 /**
  *
@@ -39,6 +38,25 @@ public class Flight extends Item {
       System.out.println("\n" + this + " was created.");
     }
     
+    @Override
+    public void add(Object object) {
+        super.add(object);
+        if(!(object instanceof Dish)) {
+            System.out.println("Cannot add " + object.toString() + " to a flight");
+        }
+        else {
+            Dish dish = (Dish) object;
+            if(storedDishes.size() > dishCapacity-1) {
+                System.out.println("Couldn't add this dish to the flight since the maximum dish capacity of: "
+                        + dishCapacity + " is reached");
+            } else {
+               storedDishes.add(dish); 
+               System.out.println("Added: " + dish.getName() + " to flight " + this.getName() );
+            }
+            
+        } 
+    }
+    
     
     // Item delete() deletes reference from static ArrayList containig Items
     // if afterwards reference stored inside the static ArrayList containing all
@@ -46,17 +64,57 @@ public class Flight extends Item {
     @Override
     public void delete() {
         super.delete();
+        ArrayList<Dish> dishes = Dish.getAllDishes();
+        for(Dish dish : dishes) {
+            ArrayList<Flight> listOfFlights = dish.getFlights();
+            if(listOfFlights.contains(this)) {
+                listOfFlights.remove(this);
+            }
+        }
         allFlights.remove(this);
     }
     
     @Override
     public String toString() {
-         
-        return "[Flight: [ID:" + this.id + "] : " + this.name + "(Num: " + flightNumber + " | Max. passengers: "
+        
+        String overview = "[Flight: [ID:" + this.id + "] : " + this.name + "(Num: " + flightNumber + " | Max. passengers: "
                 + maxPassengers + " | Max. dishes: " + dishCapacity + ")]"; 
+        String dishes = "";
+        dishes += "\n  Storing: ";
+        if(storedDishes.size() > 0) {
+            for( Dish dish : storedDishes ) {
+                dishes += dish;
+            }
+        }
+        else {
+           dishes = " << No dishes assigned >> ";
+        }
+        return overview + dishes;
+    }
+    
+
+    
+    public ArrayList<Dish> getDishes() {
+        return storedDishes;
+    }
+    
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
     
     
+    public String getFlightNumber() {
+        return this.flightNumber;
+    }
     
+    public int getMaxPassengers() {
+        return this.maxPassengers;
+    }
+    
+    public void setMaxPassengers(int maxPassengers) {
+        if(maxPassengers > 0) {
+            this.maxPassengers = maxPassengers;
+        }
+    }
 
 }

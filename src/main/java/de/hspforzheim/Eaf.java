@@ -7,6 +7,7 @@ package de.hspforzheim;
 
 ;
 import de.hspforzheim.items.DishManager;
+import de.hspforzheim.items.Flight;
 import de.hspforzheim.items.FlightManager;
 import de.hspforzheim.menues.DishMenu;
 import de.hspforzheim.menues.FlightMenu;
@@ -46,6 +47,10 @@ public class Eaf {
         menu = new Menu();
         flightMenu = new FlightMenu();
         dishMenu = new DishMenu();
+        
+        Flight f1 = new Flight("erster", "LFT", 150, 2);
+        Flight f2 = new Flight("zweiter", "LFT", 150, 1);
+        Flight f3 = new Flight("dritter", "LFT", 100, 5);
         
         
         // Start the main menu.

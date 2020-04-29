@@ -29,11 +29,13 @@ public class FlightMenu extends Menu{
     private SubMenuOperation updateFlight = new SubMenuOperation(2, "Update a flight");
     private SubMenuOperation deleteFlight = new SubMenuOperation(3, "Delete a flight");
     private SubMenuOperation showFlights = new SubMenuOperation(4, "Show flight list");
+    private SubMenuOperation addDishToFlight = new SubMenuOperation(5, "Add dish to a flight");
     
     // Array of all subMenuOperations that this object can access. backToMenu should be the last element.
     private final SubMenuOperation[] subMenuOperations = new SubMenuOperation[] { 
                                                                 createFlight, updateFlight, 
-                                                                deleteFlight, showFlights, 
+                                                                deleteFlight, showFlights,
+                                                                addDishToFlight,
                                                                 backToMenu
                                                               };
     
@@ -88,6 +90,11 @@ public class FlightMenu extends Menu{
                 System.out.println("\nEFA: FLIGHT OVERVIEW:" );
                 flightManager.listFlights();
                 break;
+             case 5: // user input is 5
+                System.out.println("");
+                System.out.println("\nEFA: ADD DISH TO FLIGHT:" );
+                flightManager.addDishToFlight();
+                break;
             default: // User input is anything but 0, 1, 2, 3, 4
                      // Displays the flight menu again.
                 break;
@@ -101,10 +108,10 @@ public class FlightMenu extends Menu{
     protected void printCommands() {
         for(MenuOperation op : subMenuOperations) {
             if(op.getKey() == 0) {
-                System.out.printf("\n%-18s%6s\n", op.getConsoleName(), op.getKey());
+                System.out.printf("\n%-22s%6s\n", op.getConsoleName(), op.getKey());
             }
             else {
-                 System.out.printf("%-18s%6s\n", op.getConsoleName(), op.getKey());
+                 System.out.printf("%-22s%6s\n", op.getConsoleName(), op.getKey());
             }
         }
     }

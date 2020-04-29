@@ -30,6 +30,13 @@ public class Item {
         allItems.add(this);
     }
     
+    
+    public void add(Object object) {
+       if( !(object instanceof Item)){
+           System.out.println("Cannot add this item to" + this);
+       }
+    }
+    
     // Delete this item from the ArrayList.
     // Garbage collector will handle this object if all references are deleted.
     public void delete() {
@@ -56,6 +63,13 @@ public class Item {
     
     public String getName() {
         return name;
+    }
+    
+    public void setName(String name) {
+        if(!(name.length() < 3 || name.length() > 64)) {
+            this.name = name;
+        }
+     
     }
     
     
