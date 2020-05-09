@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 
 
@@ -28,7 +28,7 @@ public class Menu {
     protected final String YEAR_STRING = String.valueOf(YEAR_INT);
     protected final String HEADER = "\nEAF: EAT&FLY-Management";
     protected final String VERSION = "1.0";
-    protected final int GROUP = 1;
+    protected final int GROUP = 24;
     
     // Instance variables.
     protected String title;

@@ -12,7 +12,7 @@ import de.hspforzheim.items.FlightManager;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 public class FlightMenu extends Menu{
     
@@ -75,10 +75,11 @@ public class FlightMenu extends Menu{
                 isInFlightMenu = false;
                 break;
             case 1: // user input is 1
-                System.out.println("\nEFA: FLIGHT UPDATE:" );
+                System.out.println("\nEFA: ADD FLIGHT:" );
                 flightManager.addFlight();
                 break;
             case 2: // user input is 2
+                System.out.println("\nEFA: FLIGHT UPDATE:" );
                 flightManager.updateFlight();
                 break;
             case 3: // user input is 3  

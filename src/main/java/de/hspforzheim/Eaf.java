@@ -5,7 +5,6 @@
  */
 package de.hspforzheim;
 
-;
 import de.hspforzheim.items.Dish;
 import de.hspforzheim.items.DishManager;
 import de.hspforzheim.items.Flight;
@@ -16,7 +15,7 @@ import de.hspforzheim.menues.Menu;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 
 // Start of the whole program. Implements the

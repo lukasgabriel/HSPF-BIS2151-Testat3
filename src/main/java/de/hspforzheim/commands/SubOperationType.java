@@ -7,6 +7,6 @@ package de.hspforzheim.commands;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 public enum SubOperationType { BACK, CREATE, UPDATE, DELETE, SHOW }

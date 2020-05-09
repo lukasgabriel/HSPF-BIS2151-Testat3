@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 public class DishManager extends Manager {
 
@@ -21,7 +21,7 @@ public class DishManager extends Manager {
         float price = determinePrice(scanner);
         boolean[] properties = determineProperties(scanner); // consists out of 2 elements
 
-        Dish dish = new Dish(name, properties[0], properties[1],  price);
+        Dish dish = new Dish(name, properties[0], properties[1], price);
     }
 
     public void listDishes() {
@@ -34,7 +34,7 @@ public class DishManager extends Manager {
             }
         }
     }
-    
+
     public void updateDish() {
         Scanner scanner = new Scanner(System.in);
         Dish dishToUpdate = chooseDish(scanner);
@@ -47,29 +47,30 @@ public class DishManager extends Manager {
     public void deleteDish() {
         super.delete(this);
     }
-    
-    
-     private void updateProperties( Dish dish, Scanner scanner){
+
+    private void updateProperties(Dish dish, Scanner scanner) {
         String confirmation = "";
         boolean[] newProperties = new boolean[2];
         System.out.println("Do you want to update the current dish properties?");
-        System.out.println(" Is vegan: " + dish.isVegan() );
-        System.out.println(" Is vegetarian: " + dish.isVegetarian() );
-        System.out.print("Please enter(Y/N): ");  
-        while (confirmation.isEmpty()) { 
+        System.out.println(" Is vegan: " + dish.isVegan());
+        System.out.println(" Is vegetarian: " + dish.isVegetarian());
+        while (confirmation.isEmpty()) {
+            System.out.print("Please enter(Y/N): ");
             try {
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
                 confirmation = confirmation.toUpperCase();
-                if(confirmation.equals("Y")){
+                if (confirmation.equals("Y")) {
                     newProperties = determineProperties(scanner);
                     dish.isVegan(newProperties[0]);
                     dish.isVegetarian(newProperties[1]);
-                }
-                else{
-                    if(confirmation.equals("N")){
+                } else {
+                    if (confirmation.equals("N")) {
                         System.out.println("No update for dish properties.");
                         break;
+                    } 
+                    else {
+                        confirmation = ""; // to get back to the top of the while loop
                     }
                 }
             } catch (InputMismatchException e) {
@@ -78,29 +79,30 @@ public class DishManager extends Manager {
                 scanner.next();
             }
             confirmation = confirmation.trim();
-        }       
+        }
     }
-    
-    
-    private void updatePrice( Dish dish, Scanner scanner){
+
+    private void updatePrice(Dish dish, Scanner scanner) {
         String confirmation = "";
         float newPrice;
         System.out.print("Do you want to update the dish's price?");
         System.out.println(" Current dish price is: " + dish.getPrice());
-        System.out.print("Please enter: (Y/N)");  
-        while (confirmation.isEmpty()) { 
+        while (confirmation.isEmpty()) {
+            System.out.print("Please enter: (Y/N)");
             try {
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
                 confirmation = confirmation.toUpperCase();
-                if(confirmation.equals("Y")){
+                if (confirmation.equals("Y")) {
                     newPrice = determinePrice(scanner);
                     dish.setPrice(newPrice);
-                }
-                else{
-                    if(confirmation.equals("N")){
+                } else {
+                    if (confirmation.equals("N")) {
                         System.out.println("No update for dish price.");
                         break;
+                    } 
+                    else {
+                        confirmation = "";
                     }
                 }
             } catch (InputMismatchException e) {
@@ -109,30 +111,30 @@ public class DishManager extends Manager {
                 scanner.next();
             }
             confirmation = confirmation.trim();
-        }       
+        }
     }
-    
-    
-    
-     private void updateName(Dish dish, Scanner scanner) {
+
+    private void updateName(Dish dish, Scanner scanner) {
         String confirmation = "";
         String name = "";
         System.out.print("Do you want to update the dish's name?");
         System.out.println(" Current name is: " + dish.getName());
-        System.out.print("Please enter: (Y/N)");  
-        while (confirmation.isEmpty()) { 
+        while (confirmation.isEmpty()) {
+            System.out.print("Please enter: (Y/N)");
             try {
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
                 confirmation = confirmation.toUpperCase();
-                if(confirmation.equals("Y")){
-                    name = checkName(scanner);                   
+                if (confirmation.equals("Y")) {
+                    name = checkName(scanner);
                     dish.setName(name);
-                }
-                else{
-                    if(confirmation.equals("N")){
+                } else {
+                    if (confirmation.equals("N")) {
                         System.out.println("No update for name.");
                         break;
+                    } 
+                    else {
+                        confirmation = "";
                     }
                 }
             } catch (InputMismatchException e) {
@@ -141,10 +143,9 @@ public class DishManager extends Manager {
                 scanner.next();
             }
             confirmation = confirmation.trim();
-        }      
+        }
     }
-    
-    
+
     private Dish chooseDish(Scanner scanner) {
         ArrayList<Dish> dishes = Dish.getAllDishes();
         int input = -1;
@@ -163,7 +164,7 @@ public class DishManager extends Manager {
             }
         }
         return dishes.get(input);
-     
+
     }
 
     private boolean[] determineProperties(Scanner scanner) {
@@ -186,11 +187,11 @@ public class DishManager extends Manager {
                 results[0] = true;
                 results[1] = true;
                 break;
-            } else {        
+            } else {
                 if (userInput.equals("N")) {  // food is not vegan
                     results[0] = false;
                     userInput = "";
-                    while (userInput.isEmpty()) { 
+                    while (userInput.isEmpty()) {
                         System.out.println("Is the dish vegetarian?(Y/N): ");
                         try {
                             userInput = scanner.nextLine();
@@ -254,9 +255,7 @@ public class DishManager extends Manager {
         return name;
     }
 
-    
-
-   @Override
+    @Override
     protected void deleteWithId(String id) {
         ArrayList<Dish> dishes = Item.getAllDishes();
         for (Dish dish : dishes) {

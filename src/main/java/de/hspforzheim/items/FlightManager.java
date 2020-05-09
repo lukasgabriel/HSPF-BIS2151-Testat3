@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 public class FlightManager extends Manager {
 
@@ -19,7 +19,6 @@ public class FlightManager extends Manager {
     private static final String ASK_FOR_FLIGHT_NUMBER = "Please enter a FLIGHT NUMBER \n(any 3 chars e.g. LTH, can contain numbers, special characters, etc.):";
     private static final String ASK_FOR_DISH_CAPACITY = "Please enter a DISH CAPACITY (1-5): ";
     private static final String ASK_FOR_PASSENGER_CAPACITY = "Please enter a MAXIMUM PASSENGER AMOUNT(1-200): ";
-    
 
     public void updateFlight() {
         Scanner scanner = new Scanner(System.in);
@@ -75,58 +74,60 @@ public class FlightManager extends Manager {
             dishToAdd.add(flightToAddDishTo);
         }
     }
-    
-    
-     private void updateMaxPassengers( Flight flight, Scanner scanner){
+
+    private void updateMaxPassengers(Flight flight, Scanner scanner) {
         String confirmation = "";
         int newPassengers;
         System.out.print("Do you want to update the passenger capacity?");
         System.out.println(" Current capacity is: " + flight.getMaxPassengers());
-        System.out.print("Please enter: (Y/N)");  
-        while (confirmation.isEmpty()) { 
+        while (confirmation.isEmpty()) {
+            System.out.print("Please enter: (Y/N)");
             try {
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
                 confirmation = confirmation.toUpperCase();
-                if(confirmation.equals("Y")){
+                if (confirmation.equals("Y")) {
                     newPassengers = checkPassengerCapacity(scanner);
                     flight.setMaxPassengers(newPassengers);
-                }
-                else{
-                    if(confirmation.equals("N")){
+                } else {
+                    if (confirmation.equals("N")) {
                         System.out.println("No update for flight number.");
                         break;
+                    } else {
+                        confirmation = "";
                     }
                 }
+
             } catch (InputMismatchException e) {
                 System.out.println(ERROR_OCCURED);
                 confirmation = "";
                 scanner.next();
             }
             confirmation = confirmation.trim();
-        }       
+        }
     }
-    
-    
-    private void updateFlightNumber( Flight flight, Scanner scanner){
+
+    private void updateFlightNumber(Flight flight, Scanner scanner) {
         String confirmation = "";
         String newNumber;
         System.out.print("Do you want to update the flight's number?");
         System.out.println(" Current flight number is: " + flight.getFlightNumber());
-        System.out.print("Please enter: (Y/N)");  
-        while (confirmation.isEmpty()) { 
+        while (confirmation.isEmpty()) {
+            System.out.print("Please enter: (Y/N)");
             try {
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
                 confirmation = confirmation.toUpperCase();
-                if(confirmation.equals("Y")){
+                if (confirmation.equals("Y")) {
                     newNumber = checkFlightNumber(scanner);
                     flight.setFlightNumber(newNumber);
-                }
-                else{
-                    if(confirmation.equals("N")){
+                } else {
+                    if (confirmation.equals("N")) {
                         System.out.println("No update for flight number.");
                         break;
+                    }
+                    else {
+                        confirmation = "";
                     }
                 }
             } catch (InputMismatchException e) {
@@ -135,30 +136,30 @@ public class FlightManager extends Manager {
                 scanner.next();
             }
             confirmation = confirmation.trim();
-        }       
+        }
     }
-    
-    
-    
-     private void updateName(Flight flight, Scanner scanner) {
+
+    private void updateName(Flight flight, Scanner scanner) {
         String confirmation = "";
         String name = "";
         System.out.print("Do you want to update the flight's name?");
         System.out.println(" Current name is: " + flight.getName());
-        System.out.print("Please enter: (Y/N)");  
-        while (confirmation.isEmpty()) { 
+        while (confirmation.isEmpty()) {
             try {
+                System.out.print("Please enter: (Y/N)");
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
                 confirmation = confirmation.toUpperCase();
-                if(confirmation.equals("Y")){
-                    name = checkName(scanner);                   
+                if (confirmation.equals("Y")) {
+                    name = checkName(scanner);
                     flight.setName(name);
-                }
-                else{
-                    if(confirmation.equals("N")){
+                } else {
+                    if (confirmation.equals("N")) {
                         System.out.println("No update for name.");
                         break;
+                    }
+                    else {
+                        confirmation = "";
                     }
                 }
             } catch (InputMismatchException e) {
@@ -167,9 +168,8 @@ public class FlightManager extends Manager {
                 scanner.next();
             }
             confirmation = confirmation.trim();
-        }      
+        }
     }
-    
 
     private Flight chooseFlight(Scanner scanner) {
         ArrayList<Flight> flights = Flight.getAllFlights();
@@ -189,7 +189,7 @@ public class FlightManager extends Manager {
             }
         }
         return flights.get(input);
-     
+
     }
 
     private int getFlightInput(ArrayList<Flight> allFlights) {
@@ -270,7 +270,6 @@ public class FlightManager extends Manager {
         return dishCapacity;
     }
 
-   
     private String checkFlightNumber(Scanner scanner) {
         String flightNumber = "";
         while (flightNumber.length() != 3) {

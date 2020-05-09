@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 
 // This class cannot be instantiated. This is used to create the 

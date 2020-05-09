@@ -10,7 +10,7 @@ import java.util.UUID;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 
 // Base class for all items. 

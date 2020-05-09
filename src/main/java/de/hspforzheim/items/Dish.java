@@ -10,7 +10,7 @@ import java.util.UUID;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 public class Dish extends Item {
     

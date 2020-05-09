@@ -13,7 +13,7 @@ import de.hspforzheim.items.DishManager;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 public class DishMenu extends Menu{
     
@@ -60,15 +60,19 @@ public class DishMenu extends Menu{
                 isInDishMenu = false;
                 break;
             case 1:
+                System.out.println("\nEFA: ADD DISH:" );
                 dishManager.addDish();
                 break;
             case 2:
+                System.out.println("\nEFA: DISH UPDATE:" );
                 dishManager.updateDish();
                 break;
             case 3:
+                System.out.println("\nEFA: DISH DELETION:" );
                 dishManager.deleteDish();
                 break;
             case 4:
+                System.out.println("\nEFA: DISH LIST:" );
                 dishManager.listDishes();
                 break;
             default:
