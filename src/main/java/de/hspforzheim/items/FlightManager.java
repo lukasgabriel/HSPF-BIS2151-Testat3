@@ -19,7 +19,7 @@ public class FlightManager extends Manager {
     private static final String ASK_FOR_FLIGHT_NUMBER = "Please enter a FLIGHT NUMBER \n(any 3 chars e.g. LTH, can contain numbers, special characters, etc.):";
     private static final String ASK_FOR_DISH_CAPACITY = "Please enter a DISH CAPACITY (1-5): ";
     private static final String ASK_FOR_PASSENGER_CAPACITY = "Please enter a MAXIMUM PASSENGER AMOUNT(1-200): ";
-    private static final String ERROR_OCCURED = "An error occured. Please try again: ";
+    
 
     public void updateFlight() {
         Scanner scanner = new Scanner(System.in);
@@ -72,6 +72,7 @@ public class FlightManager extends Manager {
             System.out.println("Flight already contains dish.");
         } else {
             flightToAddDishTo.add(dishToAdd);
+            dishToAdd.add(flightToAddDishTo);
         }
     }
     
@@ -310,7 +311,7 @@ public class FlightManager extends Manager {
         } else {
 
             for (Flight flight : flights) {
-                System.out.println("[Flight id:] " + flight.getId() + " --> " + flight);
+                System.out.println(flight);
             }
         }
     }

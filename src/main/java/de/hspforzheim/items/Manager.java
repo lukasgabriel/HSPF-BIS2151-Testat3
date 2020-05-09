@@ -31,6 +31,7 @@ public abstract class Manager {
     private static final String CANCEL_ACTION = "-->Action was canceled.";
     private static final String NO_ITEMS = "No items present that can be deleted.";
     
+    protected static final String ERROR_OCCURED = "An error occured. Please try again: ";
     
    
     

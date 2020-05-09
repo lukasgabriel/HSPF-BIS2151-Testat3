@@ -14,6 +14,9 @@ import java.util.UUID;
  */
 public class Dish extends Item {
     
+    private boolean isVegan;
+    private boolean isVegetarian; 
+    private float price;
     
     private ArrayList<Flight> flightsThatContainDish = new ArrayList<Flight>();
     // Create this object.
@@ -25,7 +28,27 @@ public class Dish extends Item {
        ArrayList<Dish> dishList = Item.getAllDishes();
        dishList.add(this);
     }
+       
+    public Dish(String name, boolean isVegan, boolean isVegetarian, float price) {
+       super(name);
+       ArrayList<Dish> dishList = Item.getAllDishes();
+       dishList.add(this);
+       setFoodProperties(isVegan, isVegetarian);
+       this.price = price;
+    }
     
+    
+    private void setFoodProperties(boolean isVegan, boolean isVegetarian) {
+        if(isVegan) {
+           this.isVegan = true;
+           this.isVegetarian = true;
+       }
+       else {
+           this.isVegan = false;
+           this.isVegetarian = isVegetarian;     
+       }
+    
+    }
     
     @Override
     public void add(Object object) {
@@ -38,6 +61,9 @@ public class Dish extends Item {
             flightsThatContainDish.add(flight);
         } 
     }
+    
+    
+    
     
     @Override
     public void delete() {
@@ -52,14 +78,50 @@ public class Dish extends Item {
         allDishes.remove(this);
     }
     
-    
+ 
     public ArrayList<Flight> getFlights() {
         return flightsThatContainDish;
     }
     
-     @Override
+    public boolean isVegan() {
+        return isVegan;
+    }
+    
+    public boolean isVegetarian() {
+        return isVegetarian;
+    }
+    
+    public void isVegan(boolean value) {
+        isVegan =  value;
+    }
+    
+    public void isVegetarian(boolean value) {
+        isVegetarian = value;
+    }
+    
+    public float getPrice() {
+        return price;
+    }
+    
+    public void setPrice( float price) {
+        this.price = price;
+    }
+    
+    @Override
     public String toString() {
-        return "[Dish: [ID:" + this.id + "] " + this.name + "]"; 
+        String overview = "[Dish: [ID:" + id + "] : " + name + " (Vegan: " + isVegan + " | Vegetarian: "
+                + isVegetarian + " | Price " + price + ")]"; 
+        String flights = "";  
+        if(flightsThatContainDish.size() > 0) {
+            flights += "\n  Storing: ";
+            for( Flight flight : flightsThatContainDish ) {
+                flights +="[" + flight.id + "]: " + flight.name + ", ";
+            }
+        }
+        else {
+           flights = " << No flights assigned >> ";
+        }
+        return overview + flights;
     }
     
     

@@ -60,7 +60,7 @@ public class DishMenu extends Menu{
                 isInDishMenu = false;
                 break;
             case 1:
-                dishManager.addDish("test");
+                dishManager.addDish();
                 break;
             case 2:
                 dishManager.updateDish();

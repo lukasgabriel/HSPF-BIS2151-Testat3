@@ -6,6 +6,7 @@
 package de.hspforzheim;
 
 ;
+import de.hspforzheim.items.Dish;
 import de.hspforzheim.items.DishManager;
 import de.hspforzheim.items.Flight;
 import de.hspforzheim.items.FlightManager;
@@ -47,16 +48,25 @@ public class Eaf {
         menu = new Menu();
         flightMenu = new FlightMenu();
         dishMenu = new DishMenu();
-        
-        Flight f1 = new Flight("erster", "LFT", 150, 2);
-        Flight f2 = new Flight("zweiter", "LFT", 150, 1);
-        Flight f3 = new Flight("dritter", "LFT", 100, 5);
-        
+      
+        testSetup();
         
         // Start the main menu.
         menu.start();
     }
 
+    
+    private static void testSetup() {
+          
+        Flight f1 = new Flight("New York - Paris", "NYL", 150, 2);
+        Flight f2 = new Flight("Paris - Berlin", "PBL", 150, 1);
+        Flight f3 = new Flight("Munich - Rome", "ZRA", 100, 5);
+        Flight f4 = new Flight("London - Amsterdam", "LAF", 30, 5);
+        
+        Dish d1 = new Dish("Butter Chicken", false, false, 7f);
+        Dish d2 = new Dish("Vegetarian lasagna", false, true, 9f);
+        Dish d3 = new Dish("Vegan rice curry", true, true, 12f);
+    }
     
     // Getters and setters.
     public static void setFlightMenu(FlightMenu flightMenuToSet) {

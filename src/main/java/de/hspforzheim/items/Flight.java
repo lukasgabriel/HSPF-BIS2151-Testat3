@@ -83,7 +83,7 @@ public class Flight extends Item {
         dishes += "\n  Storing: ";
         if(storedDishes.size() > 0) {
             for( Dish dish : storedDishes ) {
-                dishes += dish;
+                 dishes +="[" + dish.id + "]: " + dish.name + ", ";
             }
         }
         else {
