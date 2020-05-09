@@ -13,7 +13,7 @@ import de.hspforzheim.items.DishManager;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 public class DishMenu extends Menu{
     
@@ -57,22 +57,26 @@ public class DishMenu extends Menu{
     protected void handleUserInput( ) {
         switch(userInput) {
             case 0:
-                this.setIsInFlightMenu(false);
+                isInDishMenu = false;
                 break;
             case 1:
-                dishManager.addDish("test");
+                System.out.println("\nEFA: ADD DISH:" );
+                dishManager.addDish();
                 break;
             case 2:
+                System.out.println("\nEFA: DISH UPDATE:" );
                 dishManager.updateDish();
                 break;
             case 3:
+                System.out.println("\nEFA: DISH DELETION:" );
                 dishManager.deleteDish();
                 break;
             case 4:
+                System.out.println("\nEFA: DISH LIST:" );
                 dishManager.listDishes();
                 break;
             default:
-                System.out.println("Any other key. should stay");
+                
                 break;
         }
     }
@@ -89,7 +93,7 @@ public class DishMenu extends Menu{
         }
     }
     
-    public void setIsInFlightMenu( boolean valueToSet) {
+    public void setIsInDishMenu( boolean valueToSet) {
         isInDishMenu = valueToSet;
     }
     

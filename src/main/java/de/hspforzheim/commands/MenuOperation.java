@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 public class MenuOperation {
     

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 public class SubMenuOperation extends MenuOperation {
     

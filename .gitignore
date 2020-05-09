@@ -25,5 +25,3 @@ hs_err_pid*
 # vscode files
 /.vscode/
 *.prefs
-.project
-.classpath

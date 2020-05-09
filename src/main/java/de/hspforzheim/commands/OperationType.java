@@ -7,6 +7,6 @@ package de.hspforzheim.commands;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
 public enum OperationType { FLIGHT, DISH, EXIT }

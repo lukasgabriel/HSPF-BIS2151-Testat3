@@ -10,10 +10,13 @@ import java.util.UUID;
 
 /**
  *
- * @author Cedric Jansen
+ * @author Cedric Jansen, Lukas Gabriel
  */
+
+// Base class for all items. 
 public class Item {
     
+    // References storing all items in ArrayLists
     private static ArrayList<Item> allItems = new ArrayList<>();
     protected static ArrayList<Dish> allDishes = new ArrayList<>();
     protected static ArrayList<Flight> allFlights = new ArrayList<>();
@@ -27,10 +30,33 @@ public class Item {
         allItems.add(this);
     }
     
-    public void delete() {
-        allItems.remove(this);
+    
+    public void add(Object object) {
+       if( !(object instanceof Item)){
+           System.out.println("Cannot add this item to" + this);
+       }
     }
     
+    // Delete this item from the ArrayList.
+    // Garbage collector will handle this object if all references are deleted.
+    public void delete() {
+        allItems.remove(this); 
+    }
+    
+    @Override
+    public String toString() {
+        return "[Item: [ID:" + this.id + "] " + this.name + "]"; 
+    }
+    
+
+    // Generates a unique id for each item with the length
+    // of 6 characters.
+    private void generateUniqueId() {
+        UUID idGen = UUID.randomUUID();
+        id = idGen.toString().substring(0,6);
+    }
+    
+    // Object getters
     public String getId() {
         return id;
     }
@@ -39,10 +65,15 @@ public class Item {
         return name;
     }
     
-    private void generateUniqueId() {
-        UUID idGen = UUID.randomUUID();
-        id = idGen.toString().substring(0,6);
+    public void setName(String name) {
+        if(!(name.length() < 3 || name.length() > 64)) {
+            this.name = name;
+        }
+     
     }
+    
+    
+    // Static getters
     
     public static ArrayList<Item> gettAllItems() {
         return allItems;
