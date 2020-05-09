@@ -54,8 +54,9 @@ public class DishManager extends Manager {
         System.out.println("Do you want to update the current dish properties?");
         System.out.println(" Is vegan: " + dish.isVegan());
         System.out.println(" Is vegetarian: " + dish.isVegetarian());
+        System.out.print("Please enter(Y/N): ");
         while (confirmation.isEmpty()) {
-            System.out.print("Please enter(Y/N): ");
+            
             try {
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
@@ -87,8 +88,9 @@ public class DishManager extends Manager {
         float newPrice;
         System.out.print("Do you want to update the dish's price?");
         System.out.println(" Current dish price is: " + dish.getPrice());
+        System.out.print("Please enter: (Y/N)");
         while (confirmation.isEmpty()) {
-            System.out.print("Please enter: (Y/N)");
+            
             try {
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
@@ -119,8 +121,9 @@ public class DishManager extends Manager {
         String name = "";
         System.out.print("Do you want to update the dish's name?");
         System.out.println(" Current name is: " + dish.getName());
+        System.out.print("Please enter: (Y/N)");
         while (confirmation.isEmpty()) {
-            System.out.print("Please enter: (Y/N)");
+            
             try {
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();

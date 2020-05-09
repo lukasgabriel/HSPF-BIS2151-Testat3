@@ -80,8 +80,9 @@ public class FlightManager extends Manager {
         int newPassengers;
         System.out.print("Do you want to update the passenger capacity?");
         System.out.println(" Current capacity is: " + flight.getMaxPassengers());
+        System.out.print("Please enter: (Y/N)");
         while (confirmation.isEmpty()) {
-            System.out.print("Please enter: (Y/N)");
+            
             try {
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
@@ -112,8 +113,9 @@ public class FlightManager extends Manager {
         String newNumber;
         System.out.print("Do you want to update the flight's number?");
         System.out.println(" Current flight number is: " + flight.getFlightNumber());
+        System.out.print("Please enter: (Y/N)");
         while (confirmation.isEmpty()) {
-            System.out.print("Please enter: (Y/N)");
+            
             try {
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
@@ -144,9 +146,10 @@ public class FlightManager extends Manager {
         String name = "";
         System.out.print("Do you want to update the flight's name?");
         System.out.println(" Current name is: " + flight.getName());
+        System.out.print("Please enter: (Y/N)");
         while (confirmation.isEmpty()) {
             try {
-                System.out.print("Please enter: (Y/N)");
+                
                 confirmation = scanner.nextLine();
                 confirmation = confirmation.trim();
                 confirmation = confirmation.toUpperCase();
